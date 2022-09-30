@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ToSic.Eav">
+      <HintPath>..\deps\ToSic.Eav.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.Apps">
+      <HintPath>..\deps\ToSic.Eav.Apps.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.Core">
+      <HintPath>..\deps\ToSic.Eav.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.DataSources">
+      <HintPath>..\deps\ToSic.Eav.DataSources.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.ImportExport">
+      <HintPath>..\deps\ToSic.Eav.ImportExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.Persistence.Efc">
+      <HintPath>..\deps\ToSic.Eav.Persistence.Efc.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.Repository.Efc">
+      <HintPath>..\deps\ToSic.Eav.Repository.Efc.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.WebApi">
+      <HintPath>..\deps\ToSic.Eav.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Sxc">
+      <HintPath>..\deps\ToSic.Sxc.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Sxc.Dnn">
+      <HintPath>..\deps\ToSic.Sxc.Dnn.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Sxc.Dnn.Core">
+      <HintPath>..\deps\ToSic.Sxc.Dnn.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Sxc.Dnn.Razor">
+      <HintPath>..\deps\ToSic.Sxc.Dnn.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Sxc.Dnn.WebApi">
+      <HintPath>..\deps\ToSic.Sxc.Dnn.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Sxc.WebApi">
+      <HintPath>..\deps\ToSic.Sxc.WebApi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
