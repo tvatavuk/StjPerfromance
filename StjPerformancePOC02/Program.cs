@@ -9,31 +9,46 @@ namespace StjPerformancePOC02
         static void Main()
         {
             Forecast forecast = new(DateTime.Now, 40, "Hot");
-            JsonSerializerOptions options = JsonOptions.GetSxcUnsafeJsonSerializerOptions;
-            int iterations = 100000;
+            var iterations = 100000;
 
             var watch = Stopwatch.StartNew();
-            for (int i = 0; i < iterations; i++)
-            {
+            for (int i = 0; i < iterations; i++) 
                 Serialize(forecast, JsonOptions.SxcUnsafeJsonSerializerOptions);
-            }
             watch.Stop();
-            Console.WriteLine($"Elapsed time using one options instance: {watch.ElapsedMilliseconds}");
+            Console.WriteLine($"{nameof(JsonOptions.SxcUnsafeJsonSerializerOptions)} - Elapsed time using one options instance: {watch.ElapsedMilliseconds}");
+
+            watch = Stopwatch.StartNew();
+            for (int i = 0; i < iterations; i++) 
+                Serialize(forecast, JsonOptions.Sxc01);
+            watch.Stop();
+            Console.WriteLine($"{nameof(JsonOptions.Sxc01)} - Elapsed time using one options instance: {watch.ElapsedMilliseconds}");
 
             watch = Stopwatch.StartNew();
             for (int i = 0; i < iterations; i++)
-            {
-                Serialize(forecast);
-            }
+                Serialize(forecast, JsonOptions.Sxc02);
             watch.Stop();
-            Console.WriteLine($"Elapsed time creating new options instances: {watch.ElapsedMilliseconds}");
+            Console.WriteLine($"{nameof(JsonOptions.Sxc02)} - Elapsed time using one options instance: {watch.ElapsedMilliseconds}");
+
+            watch = Stopwatch.StartNew();
+            for (int i = 0; i < iterations; i++)
+                Serialize(forecast, JsonOptions.Sxc03);
+            watch.Stop();
+            Console.WriteLine($"{nameof(JsonOptions.Sxc03)} - Elapsed time using one options instance: {watch.ElapsedMilliseconds}");
+
+            watch = Stopwatch.StartNew();
+            for (int i = 0; i < iterations; i++)
+                Serialize(forecast, JsonOptions.Sxc04);
+            watch.Stop();
+            Console.WriteLine($"{nameof(JsonOptions.Sxc04)} - Elapsed time using one options instance: {watch.ElapsedMilliseconds}");
+
+            watch = Stopwatch.StartNew();
+            for (int i = 0; i < iterations; i++)
+                Serialize(forecast, JsonOptions.SxcUnsafeJsonSerializerOptions);
+            watch.Stop();
+            Console.WriteLine($"{nameof(JsonOptions.SxcUnsafeJsonSerializerOptions)} - Elapsed time using one options instance: {watch.ElapsedMilliseconds}");
         }
 
-        private static void Serialize(Forecast forecast, JsonSerializerOptions? options = null)
-        {
-            _ = JsonSerializer.Serialize<Forecast>(
-                forecast,
-                options ?? JsonOptions.GetSxcUnsafeJsonSerializerOptions);
-        }
+        private static string Serialize(Forecast forecast, JsonSerializerOptions options) 
+            => JsonSerializer.Serialize<Forecast>(forecast, options);
     }
 }

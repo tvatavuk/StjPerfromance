@@ -19,18 +19,84 @@ namespace StjPerformancePOC02
         /// Never allow the raw UnsafeRelaxedJsonEscaping output to be emitted into an HTML page or a <script> element.
         /// https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-character-encoding#serialize-all-characters
         /// </summary>
-        public static JsonSerializerOptions SxcUnsafeJsonSerializerOptions
-        {
-            get => _sxcUnsafeJsonSerializerOptions ??= GetSxcUnsafeJsonSerializerOptions;
-            set => _sxcUnsafeJsonSerializerOptions = value;
-        }
-        private static JsonSerializerOptions _sxcUnsafeJsonSerializerOptions;
 
-        public static JsonSerializerOptions GetSxcUnsafeJsonSerializerOptions => new JsonSerializerOptions()
+        public static JsonSerializerOptions SxcUnsafeJsonSerializerOptions = new JsonSerializerOptions()
         {
             AllowTrailingCommas = true,
             Converters = { new DateTimeConverter(), new JsonStringEnumConverter() },
             //DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            IncludeFields = true,
+            // Limit the object graph we'll consume to a fixed depth. This prevents stackoverflow exceptions
+            // from deserialization errors that might occur from deeply nested objects.
+            // This value is the same for model binding and Json.Net's serialization.
+            MaxDepth = DefaultMaxModelBindingRecursionDepth,
+            NumberHandling = JsonNumberHandling.AllowReadingFromString,
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = null, // leave property names unchanged (PascalCase for c#)
+            ReadCommentHandling = JsonCommentHandling.Skip,
+            WriteIndented = false,
+        };
+
+        public static JsonSerializerOptions Sxc01 = new JsonSerializerOptions()
+        {
+            //AllowTrailingCommas = true,
+            Converters = { new DateTimeConverter(), new JsonStringEnumConverter() },
+            //DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            //Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            //IncludeFields = true,
+            // Limit the object graph we'll consume to a fixed depth. This prevents stackoverflow exceptions
+            // from deserialization errors that might occur from deeply nested objects.
+            // This value is the same for model binding and Json.Net's serialization.
+            //MaxDepth = DefaultMaxModelBindingRecursionDepth,
+            //NumberHandling = JsonNumberHandling.AllowReadingFromString,
+            //PropertyNameCaseInsensitive = true,
+            //PropertyNamingPolicy = null, // leave property names unchanged (PascalCase for c#)
+            //ReadCommentHandling = JsonCommentHandling.Skip,
+            //WriteIndented = false,
+        };
+
+        public static JsonSerializerOptions Sxc02 = new JsonSerializerOptions()
+        {
+            //AllowTrailingCommas = true,
+            Converters = { new DateTimeConverter(), new JsonStringEnumConverter() },
+            //DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            IncludeFields = true,
+            // Limit the object graph we'll consume to a fixed depth. This prevents stackoverflow exceptions
+            // from deserialization errors that might occur from deeply nested objects.
+            // This value is the same for model binding and Json.Net's serialization.
+            //MaxDepth = DefaultMaxModelBindingRecursionDepth,
+            //NumberHandling = JsonNumberHandling.AllowReadingFromString,
+            //PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = null, // leave property names unchanged (PascalCase for c#)
+            //ReadCommentHandling = JsonCommentHandling.Skip,
+            //WriteIndented = false,
+        };
+
+        public static JsonSerializerOptions Sxc03 = new JsonSerializerOptions()
+        {
+            AllowTrailingCommas = true,
+            Converters = { new DateTimeConverter(), new JsonStringEnumConverter() },
+            //DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            IncludeFields = true,
+            // Limit the object graph we'll consume to a fixed depth. This prevents stackoverflow exceptions
+            // from deserialization errors that might occur from deeply nested objects.
+            // This value is the same for model binding and Json.Net's serialization.
+            //MaxDepth = DefaultMaxModelBindingRecursionDepth,
+            //NumberHandling = JsonNumberHandling.AllowReadingFromString,
+            //PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = null, // leave property names unchanged (PascalCase for c#)
+            ReadCommentHandling = JsonCommentHandling.Skip,
+            //WriteIndented = false,
+        };
+
+        public static JsonSerializerOptions Sxc04 = new JsonSerializerOptions()
+        {
+            AllowTrailingCommas = true,
+            Converters = { new DateTimeConverter(), new JsonStringEnumConverter() },
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             IncludeFields = true,
             // Limit the object graph we'll consume to a fixed depth. This prevents stackoverflow exceptions
